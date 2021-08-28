@@ -12,6 +12,11 @@
     <artifactId>common</artifactId>
     <packaging>pom</packaging>
 
+    <modules>
+        <module>common-util</module>
+        <module>service-util</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
