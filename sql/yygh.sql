@@ -15,3 +15,5 @@ CREATE TABLE `hospital_set` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_hoscode` (`hoscode`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='医院信息设置表';
+
+
