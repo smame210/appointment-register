@@ -19,7 +19,13 @@ public interface IDictService extends IService<Dict> {
     //根据数据id查询子数据列表
     List<Dict> findChildData(Long id);
 
+    List<Dict> findChildData(String dictCode);
+
     void exportData(HttpServletResponse response);
 
     void importDictData(MultipartFile file);
+
+    Dict findDictByParentDictCodeAndValue(String dictCode, Long value);
+
+    Dict findDictByValue(Long value);
 }

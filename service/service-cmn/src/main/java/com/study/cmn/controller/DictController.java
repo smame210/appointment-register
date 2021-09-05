@@ -21,10 +21,9 @@ import java.util.List;
  * @author smame210
  * @since 2021-08-30
  */
-@Api(value = "数据字典接口")
+@Api(tags = "数据字典接口")
 @RestController
 @RequestMapping("/admin/cmn/dict")
-@CrossOrigin
 public class DictController {
 
     @Autowired
@@ -34,6 +33,13 @@ public class DictController {
     @RequestMapping(value = "findChildData/{id}", method = RequestMethod.GET)
     public Result findChildData(@PathVariable Long id){
         List<Dict> dicts = iDictService.findChildData(id);
+        return Result.ok(dicts);
+    }
+
+    @ApiOperation(value = "根据数据DictCode查询子数据列表")
+    @RequestMapping(value = "findChildByDC/{dictCode}", method = RequestMethod.GET)
+    public Result findChildData(@PathVariable String dictCode){
+        List<Dict> dicts = iDictService.findChildData(dictCode);
         return Result.ok(dicts);
     }
 
@@ -48,5 +54,20 @@ public class DictController {
     public Result importDictData(MultipartFile file){
         iDictService.importDictData(file);
         return Result.ok();
+    }
+
+    @ApiOperation(value = "通过ParentDictCode和Value进行数据查询")
+    @RequestMapping(value = "findDict/{parentDictCode}/{value}", method = RequestMethod.GET)
+    public Dict findDict(@PathVariable String parentDictCode,
+                         @PathVariable Long value){
+        Dict dict = iDictService.findDictByParentDictCodeAndValue(parentDictCode, value);
+        return dict;
+    }
+
+    @ApiOperation(value = "通过Value进行数据查询")
+    @RequestMapping(value = "findDict/{value}", method = RequestMethod.GET)
+    public Dict findDict(@PathVariable Long value){
+        Dict dict = iDictService.findDictByValue(value);
+        return dict;
     }
 }

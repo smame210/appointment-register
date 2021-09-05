@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>common</module>
-        <module>common/common-util</module>
-        <module>common/service-util</module>
         <module>model</module>
         <module>service</module>
         <module>CodeGenerator</module>
+        <module>service-client</module>
+        <module>service-gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -23,6 +23,8 @@
     <name>appointment-register</name>
     <packaging>pom</packaging>
     <description>Online reservation registration system project for Spring Boot</description>
+
+
 
     <properties>
         <java.version>1.8</java.version>

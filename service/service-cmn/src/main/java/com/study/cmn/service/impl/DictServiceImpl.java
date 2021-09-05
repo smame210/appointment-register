@@ -32,14 +32,24 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
 
     @Override
     @Cacheable(value = "dict", keyGenerator = "keyGenerator")
-    public List<Dict> findChildData(Long id) {
+    public List<Dict> findChildData(Long parentId) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-        wrapper.eq("parent_id", id);
+        wrapper.eq("parent_id", parentId);
         List<Dict> dicts = baseMapper.selectList(wrapper);
         dicts.forEach(dict -> {
             boolean hasChildren = this.hasChildren(dict.getId());
             dict.setHasChildren(hasChildren);
         });
+        return dicts;
+    }
+
+    @Override
+    @Cacheable(value = "dict", keyGenerator = "keyGenerator")
+    public List<Dict> findChildData(String dictCode) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code", dictCode);
+        Dict dict = baseMapper.selectOne(wrapper);
+        List<Dict> dicts = this.findChildData(dict.getId());
         return dicts;
     }
 
@@ -74,6 +84,29 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    @Override
+    @Cacheable(value = "dict", keyGenerator = "keyGenerator")
+    public Dict findDictByParentDictCodeAndValue(String dictCode, Long value) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_code", dictCode);
+        Dict dict = baseMapper.selectOne(wrapper);
+
+        QueryWrapper<Dict> wrapper2 = new QueryWrapper<>();
+        wrapper2.eq("parent_id", dict.getId());
+        wrapper2.eq("value", value);
+        Dict dict2 = baseMapper.selectOne(wrapper2);
+        return dict2;
+    }
+
+    @Override
+    @Cacheable(value = "dict", keyGenerator = "keyGenerator")
+    public Dict findDictByValue(Long value) {
+        QueryWrapper<Dict> wrapper = new QueryWrapper<>();
+        wrapper.eq("value", value);
+        Dict dict = baseMapper.selectOne(wrapper);
+        return dict;
     }
 
     private boolean hasChildren(Long id){

@@ -17,3 +17,21 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+
+  data:
+    mongodb:
+      uri: mongodb://admin:123456@localhost:27017/yygh_hosp?authSource=admin&authMechanism=SCRAM-SHA-1
+      auto-index-creation: false
+#      host: 127.0.0.1
+#      port: 27017
+#      username: admin
+#      password: 123456
+#      database: yygh_hosp
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+
+

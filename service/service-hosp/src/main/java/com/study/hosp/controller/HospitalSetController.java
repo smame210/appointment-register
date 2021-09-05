@@ -3,7 +3,6 @@ package com.study.hosp.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.study.common.exception.BizException;
 import com.study.common.result.Result;
 import com.study.common.utils.MD5;
 import com.study.hosp.service.IHospitalSetService;
@@ -29,7 +28,6 @@ import java.util.Random;
 @Api(tags = "医院设置管理")
 @RestController
 @RequestMapping("/admin/hosp/hospitalSet")
-@CrossOrigin
 public class HospitalSetController{
 
     @Autowired
@@ -57,8 +55,8 @@ public class HospitalSetController{
     @ApiOperation(value = "分页查询")
     @RequestMapping(value = "findPageHospSet/{current}/{limit}", method = RequestMethod.POST)
     public Result findPageHospSet(@PathVariable Long current,
-                           @PathVariable Long limit,
-                           @RequestBody(required = false)HospitalSetQueryVo hospitalSetQueryVo){
+                                  @PathVariable Long limit,
+                                  @RequestBody(required = false)HospitalSetQueryVo hospitalSetQueryVo){
         Page<HospitalSet> page = new Page<>(current, limit);
         String hosname = hospitalSetQueryVo.getHosname();
         String hoscode = hospitalSetQueryVo.getHoscode();

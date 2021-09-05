@@ -11,5 +11,12 @@
 
     <artifactId>service-hosp</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.study</groupId>
+            <artifactId>service-cmn-client</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
