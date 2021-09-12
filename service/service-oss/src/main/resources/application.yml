@@ -24,11 +24,11 @@ spring:
       discovery:
         server-addr: 8.130.170.8:8848
 
-
+# 阿里云oss参数
 aliyun:
   oss:
     endpoint: oss-cn-shanghai.aliyuncs.com
-    accessKeyId: LTAI5tSoiyGFg97sGXHAdRnU
-    secret: 7RjnQmY8Qs4k9oLvkQ9j9jpIcqas1d
+    accessKeyId:
+    secret:
     bucket: yygh-oss-study
 

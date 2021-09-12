@@ -80,4 +80,55 @@
 
 12、定时任务
 
+### 项目结构
+```text
+--appointment-register 根目录，管理子模块：
+    --hospital-manage：医院接口模拟端（已开发，直接使用）
+    --common：公共模块父节点
+        --common-util：工具类模块，所有模块都可以依赖于它
+        --rabbit-util：rabbitmq业务封装
+        --service-util：service服务的工具包，包含service服务的公共配置类，所有service模块依赖于它
+    --server-gateway：服务网关
+    --model：实体类模块
+    --service：api接口服务父节点
+        --service-hosp：医院api接口服务
+        --service-cmn：公共api接口服务
+        --service-user：用户api接口服务
+        --service-order：订单api接口服务
+        --service-oss：文件api接口服务
+        --service-sms：短信api接口服务
+        --service-email：邮箱api接口服务(已完成但未使用)
+        --service-task：定时任务服务
+        --service-statistics：统计api接口服务
+        --service-user：用户api接口
+    --service-client：feign服务调用父节点
+        --service-cmn-client：公共api接口
+        --service-hosp-client：医院api接口
+        --service-order-client：订单api接口
+```
+
+### 运行项目
+1. 现在service-oss application.yml设置阿里云oss的参数
+```yaml
+# 阿里云oss参数
+aliyun:
+  oss:
+    endpoint: 
+    accessKeyId: 
+    secret:
+    bucket: 
+```
+2. service-sms application.yml中设置容联云的短信测试参数
+```yaml
+# 容联云中测试参数
+cloopen:
+  sms:
+    url: app.cloopen.com
+    port: 8883
+    accountSid: 
+    accountToken: 
+    appId:
+```
+3. 注意修改数据库参数
+4. 启动service下的模块及service-gateway、hospital-manage模块
 

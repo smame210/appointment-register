@@ -31,10 +31,11 @@ spring:
     host: 8.130.170.8
     port: 5672
 
+# 容联云中测试参数
 cloopen:
   sms:
     url: app.cloopen.com
     port: 8883
-    accountSid: 8aaf07087ba59356017bc0231ba4056d
-    accountToken: f3de15ad486e4e0383447bc4b95365c9
-    appId: 8aaf07087ba59356017bc0231c8e0574
+    accountSid:
+    accountToken:
+    appId:

@@ -24,14 +24,14 @@ spring:
         max-wait: -1 #最大阻塞等待时间(负数表示没限制)
         max-idle: 5
         min-idle: 0
-
+  #发件邮箱设置
   mail:
-    username: 903274768@qq.com
-    password: ocxencdqyzuebbfd
+    username:
+    password:
     host: smtp.qq.com
 #邮件发件人
 mail:
   fromMail:
-    addr: 903274768@qq.com
+    addr:
 
 
