@@ -1,0 +1,40 @@
+server:
+  port: 8205
+spring:
+  application:
+    name: service-sms
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: 8.130.170.8
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1 #最大阻塞等待时间(负数表示没限制)
+        max-idle: 5
+        min-idle: 0
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.130.170.8:8848
+
+  #rabbitmq地址
+  rabbitmq:
+    password: guest
+    username: guest
+    host: 8.130.170.8
+    port: 5672
+
+cloopen:
+  sms:
+    url: app.cloopen.com
+    port: 8883
+    accountSid: 8aaf07087ba59356017bc0231ba4056d
+    accountToken: f3de15ad486e4e0383447bc4b95365c9
+    appId: 8aaf07087ba59356017bc0231c8e0574

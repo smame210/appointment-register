@@ -49,7 +49,10 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements ID
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         wrapper.eq("dict_code", dictCode);
         Dict dict = baseMapper.selectOne(wrapper);
-        List<Dict> dicts = this.findChildData(dict.getId());
+        List<Dict> dicts = new ArrayList<>();
+        if(dict != null){
+             dicts = this.findChildData(dict.getId());
+        }
         return dicts;
     }
 

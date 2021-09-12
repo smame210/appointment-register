@@ -2,18 +2,22 @@ package com.study.hosp.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.study.cmnclient.DictFeignClient;
+import com.study.common.exception.BizException;
+import com.study.common.result.ResultCodeEnum;
 import com.study.enums.cmn.DictEnum;
 import com.study.hosp.repository.HospitalRepository;
 import com.study.hosp.service.IHospitalService;
 import com.study.model.cmn.Dict;
 import com.study.model.hosp.Hospital;
 import com.study.vo.hosp.HospitalQueryVo;
+import com.study.vo.order.SignInfoVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -50,6 +54,7 @@ public class HospitalServiceImpl implements IHospitalService {
     public Hospital getByHoscode(String hoscode) {
         Hospital hospital = hospitalRepository.getHospitalByHoscode(hoscode);
         if(hospital!=null && hospital.getIsDeleted()!=1){
+            fillParams(hospital);
             return hospital;
         }
         return null;
@@ -89,6 +94,11 @@ public class HospitalServiceImpl implements IHospitalService {
             fillParams(hospital);
         }
         return hospital;
+    }
+
+    @Override
+    public List<Hospital> findByHosname(String hosname) {
+        return hospitalRepository.findHospitalByHosnameLike(hosname);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.study.cmnclient;
 
 import com.study.model.cmn.Dict;
+import com.study.model.user.Patient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;

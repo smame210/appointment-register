@@ -8,6 +8,7 @@ import com.study.hosp.mapper.HospitalSetMapper;
 import com.study.hosp.service.IHospitalSetService;
 import com.study.model.hosp.Hospital;
 import com.study.model.hosp.HospitalSet;
+import com.study.vo.order.SignInfoVo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -32,6 +33,18 @@ public class HospitalSetServiceImpl extends ServiceImpl<HospitalSetMapper, Hospi
         }
 
         return hospitalSet.getSignKey();
+    }
+
+    @Override
+    public SignInfoVo getSignInfoVo(String hoscode) {
+        HospitalSet hospitalSet = this.getByHoscode(hoscode);
+        if (hospitalSet == null){
+            throw new BizException(ResultCodeEnum.HOSPITAL_OPEN);
+        }
+        SignInfoVo signInfoVo = new SignInfoVo();
+        signInfoVo.setSignKey(hospitalSet.getSignKey());
+        signInfoVo.setApiUrl(hospitalSet.getApiUrl());
+        return signInfoVo;
     }
 
     private HospitalSet getByHoscode(String hoscode){

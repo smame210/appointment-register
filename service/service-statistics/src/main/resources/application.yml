@@ -1,0 +1,50 @@
+server:
+  port: 8209
+
+spring:
+  application:
+    name: service-statistics
+
+  profiles:
+    active: dev
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: 8.130.170.8
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1 #最大阻塞等待时间(负数表示没限制)
+        max-idle: 5
+        min-idle: 0
+
+  data:
+    mongodb:
+      #uri: mongodb://admin:123456@localhost:27017/yygh_hosp?authSource=admin&authMechanism=SCRAM-SHA-1
+      uri: mongodb://admin:123456@8.130.170.8:27017/yygh_hosp?authSource=admin&authMechanism=SCRAM-SHA-1
+      auto-index-creation: false
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 8.130.170.8:8848
+
+  #rabbitmq地址
+  rabbitmq:
+    host: 8.130.170.8
+    port: 5672
+    username: guest
+    password: guest
+
+
+
+
+
+
+

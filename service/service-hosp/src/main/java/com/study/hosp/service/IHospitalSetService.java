@@ -2,6 +2,7 @@ package com.study.hosp.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.study.model.hosp.HospitalSet;
+import com.study.vo.order.SignInfoVo;
 
 /**
  * <p>
@@ -14,4 +15,6 @@ import com.study.model.hosp.HospitalSet;
 public interface IHospitalSetService extends IService<HospitalSet> {
 
     String getSignKey(String hoscode);
+
+    SignInfoVo getSignInfoVo(String hoscode);
 }

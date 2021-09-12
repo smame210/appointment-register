@@ -19,7 +19,7 @@ spring:
     time-zone: GMT+8
 
   redis:
-    host: localhost
+    host: 8.130.170.8
     port: 6379
     database: 0
     timeout: 1800000
@@ -33,4 +33,4 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 8.130.170.8:8848

@@ -6,7 +6,6 @@
         <module>common</module>
         <module>model</module>
         <module>service</module>
-        <module>CodeGenerator</module>
         <module>service-client</module>
         <module>service-gateway</module>
     </modules>

@@ -27,6 +27,7 @@ public enum ResultCodeEnum {
     //LOGIN_ERROR( 23005, "登录失败"),
 
     PAY_RUN(220, "支付中"),
+    GET_PAYMENTQRC_ERROR(221, "获取支付二维码出错"),
     CANCEL_ORDER_FAIL(225, "取消订单失败"),
     CANCEL_ORDER_NO(225, "不能取消预约"),
 
